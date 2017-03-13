@@ -7,7 +7,9 @@ package controlador;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import modelo.Client;
+import modelo.Polissa;
 
 /**
  *
@@ -20,7 +22,7 @@ public class Client_Controller {
      *
      * @param c
      */
-    public void Insertar(Client c) {
+    public void insertar(Client c) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
@@ -48,7 +50,7 @@ public class Client_Controller {
      *
      * @param c
      */
-    public void Modificar(Client c) {
+    public void modificar(Client c) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
@@ -76,7 +78,7 @@ public class Client_Controller {
      *
      * @param c
      */
-    public void Eliminar(Client c) {
+    public void eliminar(Client c) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
@@ -100,12 +102,13 @@ public class Client_Controller {
     }
 
     /**
-     * Método que busca un cliente a la BBDD que le llega por parametro, devuelve el Cliente
+     * Método que busca un cliente a la BBDD que le llega por parametro,
+     * devuelve el Cliente
      *
      * @param id
-     * @return 
+     * @return
      */
-    public Client Buscar(Long id) {
+    public Client buscar(Long id) {
         // Recupera el entity manager
         EntityManager em = new EM_Controller().getEntityManager();
 
@@ -116,6 +119,23 @@ public class Client_Controller {
         System.out.println("close");
         em.close();
 
+        return c;
+    }
+
+    /**
+     * Busca poliza por el cliente que le llega por parametro su nombre.
+     *
+     * @param nom
+     * @return
+     */
+    public Client buscarClientPerNom(String nom) {
+        EntityManager em = new EM_Controller().getEntityManager();
+        Query query = em.createNamedQuery("buscarClient", Client.class);
+        query.setParameter("nomClient", nom);
+        Client c = (Client) query.getResultList();
+        System.out.println(c);
+        System.out.println("close");
+        em.close();
         return c;
     }
 }
