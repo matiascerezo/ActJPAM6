@@ -26,9 +26,14 @@ public class PersonaJPA {
             Client_Controller cc = new Client_Controller();
             Vehicle_Controller vc = new Vehicle_Controller();
             Asseguradora_Controller ac = new Asseguradora_Controller();
+            Adreca_Controller adc = new Adreca_Controller();
             //Creamos los objetos
             //Adreça
-            Adreca ad1 = new Adreca("Plaza Pere IV", 5, "La Llagosta");
+            Adreca ad1 = new Adreca();
+            ad1.setCarrer("Plaza Pere IV");
+            ad1.setNumero(5);
+            ad1.setPoblacio("La Llagosta");
+            
             //Client
             Client c1 = new Client();
             c1.setNom("Matias");
@@ -39,67 +44,82 @@ public class PersonaJPA {
             u2.setNom("Matias2");
             u2.setContrasenya("1234");
             //Aseguradora
-            Asseguradora a1 = new Asseguradora(2L, "Aseguradora1", "45612345U");
+            Asseguradora a1 = new Asseguradora();
+            a1.setId(0L);
+            a1.setNom("Aseguradora1");
+            a1.setNifcif("45612345U");
             //Vehicle
-            Vehicle v1 = new Vehicle("5451BXB", "OPEL", "2010", c1);
+            Vehicle v1 = new Vehicle();
+            v1.setId(0L);
+            v1.setMatricula("5451BXB");
+            v1.setMarca("OPEL");
+            v1.setAnyFabricacio("2010");
+            v1.setClient(c1);
             //Polissa
-            Polissa p1 = new Polissa("123", c1, v1, format1.parse("01-03-2017"), format1.parse("01-04-2017"), TipusPolissa.TERCERS, 0);
+            //Polissa p1 = new Polissa("123", c1, v1, format1.parse("01-03-2017"), format1.parse("01-04-2017"), TipusPolissa.TERCERS, 0);
+            Polissa p2 = new Polissa();
+            p2.setId(0L);
+            p2.setNumPolissa("123");
+            p2.setPrenedor(c1);
+            p2.setVehicle(v1);
+            p2.setDataInici(format1.parse("01-03-2017"));
+            p2.setDataFi(format1.parse("01-04-2017"));
+            p2.setTipus(TipusPolissa.TERCERS);
+            p2.setPrima(0);
 
             //USUARI
-            uc.Insertar(u2);//Para insertar un usuario
-            Usuari uMod = uc.Buscar(0L); //Para buscar el usuario y lo asignamos a uMod.
+            uc.insertar(u2);//Para insertar un usuario
+            /*Usuari uMod = uc.buscar(321L); //Para buscar el usuario y lo asignamos a uMod.
             uMod.setNom("UsuarioMod");//Para modificar el nombre al usuario
             uMod.setContrasenya("12345");
-            uc.Modificar(uMod);//Confirmamos las modificaciones en la BD
-            uc.Eliminar(uMod);//Para eliminar el usuario.
-            //Comprobamos que ya no existe
-            uc.usuariExisteix(uMod);//Si devuelve true es que si y si devuelve false es que no.
+            uc.modificar(uMod);//Confirmamos las modificaciones en la BD
+            uc.eliminar(uMod);//Para eliminar el usuario.*/
 
             //CLIENTES
-            cc.Insertar(c1);
-            Client cMod = cc.Buscar(0L);//Buscamos el cliente y lo asignamos a la variable cMod
+            cc.insertar(c1);
+            /*Client cMod = cc.buscar(301L);//Buscamos el cliente y lo asignamos a la variable cMod
             cMod.setNom("MatiasMod");
             cMod.setNif("45612378L");
             cMod.setAdreca(ad1);
-            cc.Modificar(cMod);//Confirmamos cambios a la BD.
+            cc.modificar(cMod);//Confirmamos cambios a la BD.*/
             //Para eliminar un cliente, como tiene referencias con otras tablas,
             //primero tenemos que quitar esas referencias antes de eliminarlo.
-            List<Polissa> PEliminar = pc.buscarPerClient(0L);
-            for (int i = 0; i < PEliminar.size(); i++) {
-                pc.Eliminar(PEliminar.get(i));
-            }
+            //List<Polissa> PEliminar = pc.buscarPerClient(0L);
+            //for (int i = 0; i < PEliminar.size(); i++) {
+            //    pc.eliminar(PEliminar.get(i));
+            //}
             //Una vez hemos eliminado las referencias que tenia, podemos eliminarlo.           
-            cc.Eliminar(cMod);
+            //cc.eliminar(cMod);
 
             //VEHICLES
-            vc.Insertar(v1); // Insertem Vehicle
-            Vehicle v2 = vc.Buscar(0L);
+            vc.insertar(v1); // Insertem Vehicle
+            Vehicle v2 = vc.buscar(0L);
             v2.setMatricula("5451BXH");
             v2.setMarca("OPEL");
             v2.setAnyFabricacio("1996");
             v2.setClient(c1);
-            vc.Modificar(v2);
+            vc.modificar(v2);
             //Pasa lo mismo que en el apartado del cliente, que tiene referencias en otras tablas
             //por tanto, hay que eliminar las referencias.
             Polissa pEli = pc.buscarPolizaVehicle(0L);//Buscamos la poliza por vehiculo por su id.
-            pc.Eliminar(pEli);
+            pc.eliminar(pEli);
             //Ahora ya no tenemos referencias.
-            vc.Eliminar(v2);
+            vc.eliminar(v2);
 
             //ASSEGURADORA
-            ac.Insertar(a1);//Insertamos asseguradora
-            Asseguradora aMod = ac.Buscar(0L);//Busquem asseguradora y la assignamos a la variable aMod.
+            ac.insertar(a1);//Insertamos asseguradora
+            Asseguradora aMod = ac.buscar(0L);//Busquem asseguradora y la assignamos a la variable aMod.
             aMod.setNom("Asseguradora2");
             aMod.setNifcif("45215212E");
-            ac.Modificar(aMod);//Confirmamos la modificacion en la BD.    
-            ac.Eliminar(aMod);
+            ac.modificar(aMod);//Confirmamos la modificacion en la BD.    
+            ac.eliminar(aMod);
 
             //POLISSES
-            pc.Insertar(p1);
+            pc.insertar(p2);
             Polissa pMod = pc.buscar(0L);
             pMod.setTipus(TipusPolissa.TOTRISC);//Modificamos el tipo de poliza
-            pc.Modificar(pMod);
-            pc.Eliminar(pMod);
+            pc.modificar(pMod);
+            pc.eliminar(pMod);
             
             System.out.println("FIN");
             
