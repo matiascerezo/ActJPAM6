@@ -20,7 +20,7 @@ public class Asseguradora_Controller {
      *
      * @param a
      */
-    public void Insertar(Asseguradora a) {
+    public void insertar(Asseguradora a) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
@@ -48,7 +48,7 @@ public class Asseguradora_Controller {
      *
      * @param a
      */
-    public void Modificar(Asseguradora a) {
+    public void modificar(Asseguradora a) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
@@ -76,7 +76,7 @@ public class Asseguradora_Controller {
      *
      * @param a
      */
-    public void Eliminar(Asseguradora a) {
+    public void eliminar(Asseguradora a) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
@@ -105,7 +105,7 @@ public class Asseguradora_Controller {
      * @param id
      * @return
      */
-    public Asseguradora Buscar(Long id) {
+    public Asseguradora buscar(Long id) {
         // Recupera el entity manager
         EntityManager em = new EM_Controller().getEntityManager();
         Asseguradora a = (Asseguradora) em.find(Asseguradora.class, id);

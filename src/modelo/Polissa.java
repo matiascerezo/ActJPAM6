@@ -30,8 +30,8 @@ import javax.persistence.Temporal;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "buscarPolizaCliente", query = "SELECT p FROM JPAPOLISSA p WHERE p.prenedor.id=:id"),
-    @NamedQuery(name = "buscarPolizaVehicle", query = "SELECT p FROM JPAPOLISSA p WHERE p.vehicle.vehicleId=:vehicle")})
+    @NamedQuery(name = "buscarPolizaCliente", query = "SELECT p FROM Polissa p WHERE p.prenedor.id=:id"),
+    @NamedQuery(name = "buscarPolizaVehicle", query = "SELECT p FROM Polissa p WHERE p.vehicle.vehicleId=:vehicle")})
 @Table(name = "JPAPOLISSA", indexes = {
     @Index(columnList = "prenedor", name = "indexPrenedor")})
 public class Polissa implements Serializable {

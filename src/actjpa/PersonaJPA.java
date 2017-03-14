@@ -69,27 +69,27 @@ public class PersonaJPA {
 
             //USUARI
             uc.insertar(u2);//Para insertar un usuario
-            /*Usuari uMod = uc.buscar(321L); //Para buscar el usuario y lo asignamos a uMod.
+            Usuari uMod = uc.buscar(321L); //Para buscar el usuario y lo asignamos a uMod.
             uMod.setNom("UsuarioMod");//Para modificar el nombre al usuario
             uMod.setContrasenya("12345");
             uc.modificar(uMod);//Confirmamos las modificaciones en la BD
-            uc.eliminar(uMod);//Para eliminar el usuario.*/
+            uc.eliminar(uMod);//Para eliminar el usuario.
 
             //CLIENTES
             cc.insertar(c1);
-            /*Client cMod = cc.buscar(301L);//Buscamos el cliente y lo asignamos a la variable cMod
+            Client cMod = cc.buscar(301L);//Buscamos el cliente y lo asignamos a la variable cMod
             cMod.setNom("MatiasMod");
             cMod.setNif("45612378L");
             cMod.setAdreca(ad1);
-            cc.modificar(cMod);//Confirmamos cambios a la BD.*/
+            cc.modificar(cMod);//Confirmamos cambios a la BD.
             //Para eliminar un cliente, como tiene referencias con otras tablas,
             //primero tenemos que quitar esas referencias antes de eliminarlo.
-            //List<Polissa> PEliminar = pc.buscarPerClient(0L);
-            //for (int i = 0; i < PEliminar.size(); i++) {
-            //    pc.eliminar(PEliminar.get(i));
-            //}
+            List<Polissa> PEliminar = pc.buscarPerClient(0L);
+            for (int i = 0; i < PEliminar.size(); i++) {
+                pc.eliminar(PEliminar.get(i));
+            }
             //Una vez hemos eliminado las referencias que tenia, podemos eliminarlo.           
-            //cc.eliminar(cMod);
+            cc.eliminar(cMod);
 
             //VEHICLES
             vc.insertar(v1); // Insertem Vehicle

@@ -27,7 +27,7 @@ import javax.persistence.Table;
  */
 @Entity
 @NamedQueries({
-@NamedQuery(name = "buscarPorMatricula", query = "Select v FROM JPAVEHICLE v WHERE v.matricula=:matricula")})
+@NamedQuery(name = "buscarPorMatricula", query = "Select v FROM Vehicle v WHERE v.matricula=:matricula")})
 @Table(name = "JPAVEHICLE" , indexes = {@Index(columnList = "matricula", name = "indexMatricula")})
 public class Vehicle implements Serializable {
 

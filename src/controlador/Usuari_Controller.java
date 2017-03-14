@@ -20,7 +20,7 @@ public class Usuari_Controller {
      *
      * @param u
      */
-    public void Insertar(Usuari u) {
+    public void insertar(Usuari u) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
@@ -47,7 +47,7 @@ public class Usuari_Controller {
      *
      * @param u
      */
-    public void Modificar(Usuari u) {
+    public void modificar(Usuari u) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
@@ -75,7 +75,7 @@ public class Usuari_Controller {
      *
      * @param u
      */
-    public void Eliminar(Usuari u) {
+    public void eliminar(Usuari u) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
@@ -105,22 +105,12 @@ public class Usuari_Controller {
      * @param id
      * @return
      */
-    public Usuari Buscar(Long id) {
+    public Usuari buscar(Long id) {
         // Recupera el entity manager
         EntityManager em = new EM_Controller().getEntityManager();
         Usuari u = (Usuari) em.find(Usuari.class, id);
         System.out.println("close");
         em.close();
         return u;
-    }
-
-    /**
-     * Torna un boolean si existeix l'usuari o no.
-     *
-     * @param u
-     * @return
-     */
-    public boolean usuariExisteix(Usuari u) {
-        return u == null;
     }
 }

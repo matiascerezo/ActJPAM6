@@ -24,7 +24,7 @@ import javax.persistence.Table;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "buscarClient", query = "SELECT c FROM JPACLIENT c WHERE c.nomClient=:nomClient")})
+    @NamedQuery(name = "buscarClient", query = "SELECT c FROM Client c WHERE c.nomClient=:nomClient")})
 @Table(name = "JPACLIENT")
 public class Client implements Serializable {
 

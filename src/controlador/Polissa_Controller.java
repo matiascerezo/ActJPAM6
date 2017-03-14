@@ -22,7 +22,7 @@ public class Polissa_Controller {
      *
      * @param p
      */
-    public void Insertar(Polissa p) {
+    public void insertar(Polissa p) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
@@ -50,7 +50,7 @@ public class Polissa_Controller {
      *
      * @param p
      */
-    public void Modificar(Polissa p) {
+    public void modificar(Polissa p) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
@@ -78,7 +78,7 @@ public class Polissa_Controller {
      *
      * @param p
      */
-    public void Eliminar(Polissa p) {
+    public void eliminar(Polissa p) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();

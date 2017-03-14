@@ -21,7 +21,7 @@ public class Vehicle_Controller {
      *
      * @param v
      */
-    public void Insertar(Vehicle v) {
+    public void insertar(Vehicle v) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
@@ -48,7 +48,7 @@ public class Vehicle_Controller {
      *
      * @param v
      */
-    public void Modificar(Vehicle v) {
+    public void modificar(Vehicle v) {
         // Recupera el entity manager
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
@@ -77,7 +77,7 @@ public class Vehicle_Controller {
      *
      * @param v
      */
-    public void Eliminar(Vehicle v) {
+    public void eliminar(Vehicle v) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
@@ -107,7 +107,7 @@ public class Vehicle_Controller {
      * @param id
      * @return
      */
-    public Vehicle Buscar(long id) {
+    public Vehicle buscar(long id) {
         // Recupera el entity manager
         EntityManager em = new EM_Controller().getEntityManager();
         Vehicle v = (Vehicle) em.find(Vehicle.class, id);
